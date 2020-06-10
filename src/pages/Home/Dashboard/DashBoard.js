@@ -75,9 +75,9 @@ class DashBoard extends Component{
         open={open}
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={this.handleDrawerClose}>
+          {/* <IconButton onClick={this.handleDrawerClose}>
             <ChevronLeftIcon />
-          </IconButton>
+          </IconButton> */}
         </div>
         <Divider />
         <List>{mainListItems}</List>
