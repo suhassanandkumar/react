@@ -1,6 +1,6 @@
 import React,{ Component } from "react";
 import clsx from 'clsx';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { lighten } from '@material-ui/core/styles';
 
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';

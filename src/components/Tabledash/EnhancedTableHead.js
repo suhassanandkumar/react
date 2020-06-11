@@ -1,6 +1,6 @@
 import React,{ Component } from "react";
 import PropTypes from 'prop-types';
-import {  makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';

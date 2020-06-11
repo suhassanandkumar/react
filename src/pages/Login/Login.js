@@ -17,9 +17,7 @@ import Container from '@material-ui/core/Container';
 
 class LoginComponent extends Component {
 
-  constructor(props){
-    super(props)
-  }
+ 
 
     handleSubmit = (event) => {
         event.preventDefault();
