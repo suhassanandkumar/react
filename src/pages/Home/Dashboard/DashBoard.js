@@ -7,7 +7,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-
+import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -107,9 +107,10 @@ class DashBoard extends Component{
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container,classes.spaceing}>
-          <Grid container spacing={3}>
+          <Grid container xs={12} md={12} lg={12}>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9} >
+            <TextField id="outlined-basic" label="Outlined" variant="outlined" /> 
+            <Grid item xs={12} md={12} lg={12} >
               <Paper className={fixedHeightPaper,classes.spaceing}>
                 {/* <Chart /> */}
                 <TableDash/>
