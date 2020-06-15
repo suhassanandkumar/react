@@ -17,7 +17,15 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
-import { mainListItems, secondaryListItems } from './listItems';
+import TreeView from '@material-ui/lab/TreeView';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import TreeItem from '@material-ui/lab/TreeItem';
+
+import { menuItems } from './listItems';
+import { FormControl,FormControlLabel, InputLabel, Input, FormHelperText, Checkbox, Button } from '@material-ui/core';
+
+
 import TableDash from "../../../components/Tabledash/Tabledash";
 
 
@@ -27,7 +35,9 @@ class DashBoard extends Component{
    constructor(props){
        super(props)
        this.state = {
-           open:true
+           open:true,
+           headingTitle:'Dashboard',
+           menuList:this.loadMenuItem(menuItems)
        }
    }
 
@@ -40,15 +50,24 @@ class DashBoard extends Component{
     //this.setState({open:false})
 
   };
+  onSubMenuClick = (item,index) => {
+    this.setState({headingTitle:item.name})
+  }
+
+  loadMenuItem = (items=[],isSub=false) => {
+    if(isSub)
+    return items.map((subItem,index)=> ( <TreeItem key={subItem.id} nodeId={""+subItem.id} label={subItem.name} onClick={() => {this.onSubMenuClick(subItem,index)}}/>))
+    return items.map((subItem,index)=> ( <TreeItem key={subItem.id} nodeId={""+subItem.id} label={subItem.name} children={this.loadMenuItem(subItem.submenu,true)}/>))
+  }
   
 
     render(){
-        const {open} = this.state;
+        const {open,headingTitle,menuList} = this.state;
         
         const {classes} = this.props
         const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
         return (
-<div className={classes.root}>
+      <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
@@ -62,7 +81,7 @@ class DashBoard extends Component{
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            {headingTitle}
           </Typography>
          
         </Toolbar>
@@ -75,21 +94,93 @@ class DashBoard extends Component{
         open={open}
       >
         <div className={classes.toolbarIcon}>
-          {/* <IconButton onClick={this.handleDrawerClose}>
+          <IconButton onClick={this.handleDrawerClose}>
             <ChevronLeftIcon />
-          </IconButton> */}
+          </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
+        <TreeView
+      className={classes.rootBoard}
+      defaultCollapseIcon={<ExpandMoreIcon />}
+      defaultExpandIcon={<ChevronRightIcon />}
+    >
+      {menuList}
+      
+    </TreeView>
+       
+       
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container,classes.spaceing}>
-          <Grid container spacing={3}>
+          <Grid container xs={12} md={12} lg={12}>
+        
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="dataSourceId">DataSource Id</InputLabel>
+                  <Input id="dataSourceId"  />
+                </Grid>
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="projectId">project Id</InputLabel>
+                  <Input id="projectId"  />
+                </Grid>
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="queryId">query Id</InputLabel>
+                  <Input id="queryId"  />
+                </Grid>
+            
+         
+         <Grid container xs={12} md={12} lg={12}>
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="OccuranceId">Occurance Id</InputLabel>
+                  <Input id="OccuranceId"  />
+                </Grid>
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="DsLocation">DsLocation</InputLabel>
+                  <Input id="DsLocation"  />
+                </Grid>
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="DsConnectingString">DS Connecting String</InputLabel>
+                  <Input id="DsConnectingString"  />
+                </Grid>
+            
+         </Grid>
+         <Grid container xs={12} md={12} lg={12} >
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="FileName">File Name</InputLabel>
+                  <Input id="FileName"  />
+                </Grid>
+                <Grid  xs={4}  >
+                <FormControlLabel
+                value="rd"
+                control={<Checkbox color="primary" />}
+                label="Recurring Data"
+                labelPlacement="rd"/>
+              </Grid>
+                
+            
+         </Grid>
+         <Grid container xs={12} md={12} lg={12} >
+                <Grid  xs={2}  >
+                <Button variant="contained">Default</Button>
+                </Grid>
+                <Grid  xs={2}  >
+                <Button variant="contained">Default</Button>
+              </Grid>
+              <Grid  xs={2}  >
+              <Button variant="contained">Default</Button>
+                </Grid>
+                <Grid  xs={2}  >
+                <Button variant="contained">Default</Button>
+              </Grid>
+              <Grid  xs={2}  >
+              <Button variant="contained">Default</Button>
+                </Grid>
+                
+                
+            
+         </Grid>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9} >
+            <Grid item xs={12} md={12} lg={12} >
               <Paper className={fixedHeightPaper,classes.spaceing}>
                 {/* <Chart /> */}
                 <TableDash/>
@@ -113,6 +204,11 @@ const drawerWidth = 240;
 const useStyles = ((theme) => ({
   root: {
     display: 'flex',
+  },
+  rootBoard:{
+    height: 240,
+    flexGrow: 1,
+    maxWidth: 400,
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
@@ -190,6 +286,14 @@ const useStyles = ((theme) => ({
   },
   spaceing:{
     
+  },
+  paperForDetail: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  rootForDetail:{
+    flexGrow: 1,
   }
 }));
 
