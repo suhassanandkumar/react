@@ -1,13 +1,13 @@
 import React,{ Component } from "react";
 import { withRouter } from "react-router";
 import clsx from 'clsx';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles,withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import TextField from '@material-ui/core/TextField'
+import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -22,6 +23,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@material-ui/lab/TreeItem';
 
 import { menuItems } from './listItems';
+import { FormControl,FormControlLabel, InputLabel, Input, FormHelperText, Checkbox, Button } from '@material-ui/core';
+
+
 import TableDash from "../../../components/Tabledash/Tabledash";
 
 
@@ -90,8 +94,9 @@ class DashBoard extends Component{
         open={open}
       >
         <div className={classes.toolbarIcon}>
-        
-        {/* add wellsfargo icon */}
+          <IconButton onClick={this.handleDrawerClose}>
+            <ChevronLeftIcon />
+          </IconButton>
         </div>
         <Divider />
         <TreeView
@@ -100,6 +105,7 @@ class DashBoard extends Component{
       defaultExpandIcon={<ChevronRightIcon />}
     >
       {menuList}
+      
     </TreeView>
        
        
@@ -108,8 +114,72 @@ class DashBoard extends Component{
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container,classes.spaceing}>
           <Grid container xs={12} md={12} lg={12}>
+        
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="dataSourceId">DataSource Id</InputLabel>
+                  <Input id="dataSourceId"  />
+                </Grid>
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="projectId">project Id</InputLabel>
+                  <Input id="projectId"  />
+                </Grid>
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="queryId">query Id</InputLabel>
+                  <Input id="queryId"  />
+                </Grid>
+            
+         
+         <Grid container xs={12} md={12} lg={12}>
+                <Grid  xs={4}  >
+                  {/* <InputLabel htmlFor="OccuranceId">Occurance Id</InputLabel> */}
+                  <Input  id="OccuranceId"  placeholder="Occurance Id"/>
+                </Grid>
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="DsLocation">DsLocation</InputLabel>
+                  <Input id="DsLocation"  />
+                </Grid>
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="DsConnectingString">DS Connecting String</InputLabel>
+                  <Input id="DsConnectingString"  />
+                </Grid>
+            
+         </Grid>
+         <Grid container xs={12} md={12} lg={12} >
+                <Grid  xs={4}  >
+                  <InputLabel htmlFor="FileName">File Name</InputLabel>
+                  <Input id="FileName"  />
+                </Grid>
+                <Grid  xs={4}  >
+                <FormControlLabel
+                value="rd"
+                control={<Checkbox color="primary" />}
+                label="Recurring Data"
+                labelPlacement="rd"/>
+              </Grid>
+                
+            
+         </Grid>
+         <Grid container xs={12} md={12} lg={12} >
+                <Grid  xs={2}  >
+                <Button variant="contained">Default</Button>
+                </Grid>
+                <Grid  xs={2}  >
+                <Button variant="contained">Default</Button>
+              </Grid>
+              <Grid  xs={2}  >
+              <Button variant="contained">Default</Button>
+                </Grid>
+                <Grid  xs={2}  >
+                <Button variant="contained">Default</Button>
+              </Grid>
+              <Grid  xs={2}  >
+              <Button variant="contained">Default</Button>
+                </Grid>
+                
+                
+            
+         </Grid>
             {/* Chart */}
-            <TextField id="outlined-basic" label="Outlined" variant="outlined" /> 
             <Grid item xs={12} md={12} lg={12} >
               <Paper className={fixedHeightPaper,classes.spaceing}>
                 {/* <Chart /> */}
@@ -216,6 +286,14 @@ const useStyles = ((theme) => ({
   },
   spaceing:{
     
+  },
+  paperForDetail: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  rootForDetail:{
+    flexGrow: 1,
   }
 }));
 
