@@ -20,7 +20,7 @@ class TableDash extends Component {
       order:"asc",
       orderBy:"calories",
       page:0,
-      dense:false,
+      dense:true,
       rowsPerPage:5,
       selected :[]
     }
@@ -217,10 +217,7 @@ class TableDash extends Component {
           onChangeRowsPerPage={this.handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={this.handleChangeDense} />}
-        label="Dense padding"
-      />
+      
     </div>
         );
     }

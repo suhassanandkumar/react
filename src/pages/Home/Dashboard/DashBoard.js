@@ -23,7 +23,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@material-ui/lab/TreeItem';
 
 import { menuItems } from './listItems';
-import { FormControl,FormControlLabel, InputLabel, Input, FormHelperText, Checkbox, Button } from '@material-ui/core';
+import { FormControl,FormControlLabel, InputLabel, Input, FormHelperText, Checkbox, Button, TextField } from '@material-ui/core';
 
 
 import TableDash from "../../../components/Tabledash/Tabledash";
@@ -116,14 +116,15 @@ class DashBoard extends Component{
           <Grid container xs={12} md={12} lg={12}>
         
                 <Grid  xs={4}  >
-                  <InputLabel htmlFor="dataSourceId">DataSource Id</InputLabel>
-                  <Input id="dataSourceId"  />
+                  {/* <InputLabel htmlFor="dataSourceId">DataSource Id</InputLabel>
+                  <Input id="dataSourceId"  /> */}
+                   <TextField id="dataSourceId" label="DataSource Id" type ="search" />
                 </Grid>
                 <Grid  xs={4}  >
                   <InputLabel htmlFor="projectId">project Id</InputLabel>
                   <Input id="projectId"  />
                 </Grid>
-                <Grid  xs={4}  >
+                <Grid  xs={4} >
                   <InputLabel htmlFor="queryId">query Id</InputLabel>
                   <Input id="queryId"  />
                 </Grid>
@@ -131,8 +132,10 @@ class DashBoard extends Component{
          
          <Grid container xs={12} md={12} lg={12}>
                 <Grid  xs={4}  >
-                  {/* <InputLabel htmlFor="OccuranceId">Occurance Id</InputLabel> */}
-                  <Input  id="OccuranceId"  placeholder="Occurance Id"/>
+                  {/* <InputLabel htmlFor="OccuranceId">Occurance Id</InputLabel>
+                  <Input  id="OccuranceId"  /> */}
+                 <TextField id="OccuranceId" label="Occurance ID" type ="search" />
+                  
                 </Grid>
                 <Grid  xs={4}  >
                   <InputLabel htmlFor="DsLocation">DsLocation</InputLabel>
@@ -209,6 +212,12 @@ const useStyles = ((theme) => ({
     height: 240,
     flexGrow: 1,
     maxWidth: 400,
+  },
+  formroot:{
+    '& > *':{
+      margin: theme.spacing(1),
+      width:'25ch'
+    }
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
