@@ -121,12 +121,14 @@ class DashBoard extends Component{
                    <TextField id="dataSourceId" label="DataSource Id" type ="search" />
                 </Grid>
                 <Grid  xs={4}  >
-                  <InputLabel htmlFor="projectId">project Id</InputLabel>
-                  <Input id="projectId"  />
+                  {/* <InputLabel htmlFor="projectId">project Id</InputLabel>
+                  <Input id="projectId"  /> */}
+                  <TextField id="projectId" label="Project Id" type ="search" />
                 </Grid>
                 <Grid  xs={4} >
-                  <InputLabel htmlFor="queryId">query Id</InputLabel>
-                  <Input id="queryId"  />
+                  {/* <InputLabel htmlFor="queryId">query Id</InputLabel>
+                  <Input id="queryId"  /> */}
+                  <TextField id="queryId" label="query Id" type ="search" />
                 </Grid>
             
          
@@ -138,19 +140,23 @@ class DashBoard extends Component{
                   
                 </Grid>
                 <Grid  xs={4}  >
-                  <InputLabel htmlFor="DsLocation">DsLocation</InputLabel>
-                  <Input id="DsLocation"  />
+                  {/* <InputLabel htmlFor="DsLocation">DsLocation</InputLabel>
+                  <Input id="DsLocation"  /> */}
+                  <TextField id="DsLocation" label="DsLocation" type ="search" />
                 </Grid>
                 <Grid  xs={4}  >
-                  <InputLabel htmlFor="DsConnectingString">DS Connecting String</InputLabel>
-                  <Input id="DsConnectingString"  />
+                  {/* <InputLabel htmlFor="DsConnectingString">DS Connecting String</InputLabel>
+                  <Input id="DsConnectingString"  /> */}
+                  <TextField id="DsConnectingString" label="Ds Connecting String" type ="search" />
+                  
                 </Grid>
             
          </Grid>
          <Grid container xs={12} md={12} lg={12} >
                 <Grid  xs={4}  >
-                  <InputLabel htmlFor="FileName">File Name</InputLabel>
-                  <Input id="FileName"  />
+                  {/* <InputLabel htmlFor="FileName">File Name</InputLabel>
+                  <Input id="FileName"  /> */}
+                <TextField id="FileName" label="File Name" type ="search" />
                 </Grid>
                 <Grid  xs={4}  >
                 <FormControlLabel
